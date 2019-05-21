@@ -1,0 +1,65 @@
+
+  body {
+    background-image: url("../images/eXtreme.jpg");
+    background-color: #cccccc;
+    color: white;
+    margin: 20px;
+   }
+
+
+.myHeader {
+  grid-area: header;
+}
+
+.myMenu {
+  grid-area: menu;
+}
+
+.myMain {
+  grid-area: main;
+}
+
+.myRight {
+  grid-area: right;
+}
+
+.myFooter {
+  grid-area: footer;
+}
+
+h1, h2, h3{
+  font-family: 'Abril Fatface', cursive;
+  text-shadow: 2px 2px #000000;
+  text-align: center;
+  text-decoration: underline;
+}
+
+h4, h5, h6, p, a{
+  font-family: 'Open Sans', sans-serif;
+}
+
+a:hover{
+  color: #fde261;
+  text-shadow: 1px 2px black;
+  font-weight: bold;
+}
+
+input[type=text] {
+  font-size: 1.5em;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: white;
+  width: 10em;
+}
+button[type=submit] {
+  font-size: 1.5em;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: #ff85d5;
+}
+input[type=text]:hover {
+  box-shadow: 5px 5px #ff85d5;
+}
+input[type=text]:focus {
+  background-color: #fde261;
+}

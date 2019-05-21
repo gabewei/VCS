@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="../projects/css/compsciTriangle.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="../css/w3.css">
+  <script type="text/javascript" src="../projects/js/compsciTriangle.js"></script>
+  <title>Computer Science Triangle Project</title>
+</head>
+
+<body>
+  <div class="grid-container">
+    <div class="myRunner">
+      <h3>Hello! This is the documentation for my Java Triangle Project</h3>
+      <h5 id="RunnerClick">It all begins in my Runner.java file, where all the shape classes can be called (CLICK) </h5>
+      <pre id ="RunnerCode">
+        <code>
+import javax.swing.JOptionPane;
+public class Runner {
+
+	public static void main(String[] args) {
+
+		Triangle myTriangle = new Triangle();
+		Circle myCircle = new Circle();
+		Rectangle myRectangle = new Rectangle();
+		Cuboid myCuboid = new Cuboid();
+		Sphere mySphere = new Sphere();
+
+		JOptionPane.showMessageDialog(null, "Gabe W. - P3A - 9/14/18 ");
+
+		int goAgain = 1;
+
+		while(goAgain == 1) {
+		String msg = "Please enter your selection: Triangle, Circle, Rectangle, Cuboid, Sphere";
+		String answer = JOptionPane.showInputDialog(msg);
+		JOptionPane.showMessageDialog(null, answer);
+
+		if(answer.equals("Triangle") || (answer.equals("triangle"))) {
+			JOptionPane.showMessageDialog(null, "YES! We are in Triangle!");
+			myTriangle.setVarsToZero();
+			myTriangle.setSides();;
+			myTriangle.calcPerimeter();
+			myTriangle.calcArea();
+			myTriangle.showVars();
+			myTriangle.calcAndShowAngles();
+		}
+
+		else if(answer.equals("Circle") || (answer.equals("circle"))) {
+			JOptionPane.showMessageDialog(null, "YES! We are in Circle!");
+			myCircle.setVarsToZero();
+			myCircle.setRadius();
+			myCircle.calcCircumference();
+			myCircle.calcArea();
+			myCircle.showVars();
+		}
+
+		else if(answer.equals("Rectangle") || (answer.equals("rectangle"))) {
+			JOptionPane.showMessageDialog(null, "YES! We are in Rectangle!");
+			myRectangle.setVarsToZero();
+			myRectangle.setSides();
+			myRectangle.calcPerimeter();
+			myRectangle.calcArea();
+			myRectangle.calcDiagonal();
+			myRectangle.showVars();
+
+		}
+
+		else if(answer.equals("Cuboid") || (answer.equals("cuboid"))) {
+			JOptionPane.showMessageDialog(null, "YES! We are in Cuboid!");
+			myCuboid.setVarsToZero();
+			myCuboid.setSides();
+			myCuboid.calcVolume();
+			myCuboid.calcSurfaceArea();
+			myCuboid.showVars();
+		}
+
+		else if(answer.equals("Sphere") || (answer.equals("sphere"))) {
+			JOptionPane.showMessageDialog(null, "YES! We are in Sphere!");
+			mySphere.setVarsToZero();
+			mySphere.setRadius();
+			mySphere.calcVolume();
+			mySphere.calcSurfaceArea();
+			mySphere.showVars();
+		}
+
+		else {
+			JOptionPane.showMessageDialog(null, "YIKES! I do not know what you ask");
+		}
+
+		msg = "Would you like to go again (Y/N)";
+		answer = JOptionPane.showInputDialog(msg);
+		JOptionPane.showMessageDialog(null, answer);
+
+		if (answer.equals("Y") || answer.equals("y") || answer.equals("Yes") || answer.equals("yes")) {
+			goAgain = 1;
+		}
+
+		else {
+			goAgain = 0;
+		}
+		}
+	}
+}
+        </code>
+      </pre>
+    </div>
+    <div class="myTriangle">
+      <h5 id="TriangleClick">Here's the code from my Triangle.java class file (CLICK) </h5>
+      <pre id="TriangleCode">
+        <code>
+import javax.swing.JOptionPane;
+public class Triangle {
+
+	private double sideA, sideB, sideC;
+	private double perimeter;
+	private double theArea;
+
+	public Triangle() {
+	}
+
+	public void setVarsToZero() {
+		sideA = 0.0;
+		sideB = 0.0;
+		sideC = 0.0;
+		perimeter = 0.0;
+		theArea = 0.0;
+	}
+
+	public void showVars() {
+		String msg = "Side A, B, C = " + sideA + ", " + sideB + ", " + sideC + "; perimeter = "
+				+ perimeter + "; area = " + theArea;
+		JOptionPane.showMessageDialog(null, msg);
+	}
+
+	public void setSides() {
+		boolean a = true;
+		while(a) {
+			try {
+				sideA = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value for side A: "));
+				a = false;
+			}catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Please Enter a Number");
+			}
+		}
+
+		boolean b = true;
+		while(b) {
+			try {
+				sideB = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value for side B: "));
+				b = false;
+			}catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Please Enter a Number");
+			}
+		}
+
+		boolean c = true;
+		while(c) {
+			try {
+				sideC = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value for side C: "));
+				c = false;
+			}catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Please Enter a Number");
+			}
+		}
+	}
+
+	public void calcPerimeter() {
+		perimeter = sideA + sideB + sideC;
+	}
+
+	public void calcArea() {
+		double p = 0.0;
+		p = (sideA + sideB + sideC)/2.0;
+		theArea = Math.sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
+	}
+
+	public void calcAndShowAngles() {
+		double cosA = 0.0, cosB = 0.0, cosC = 0.0, acosA = 0.0, acosB = 0.0, acosC = 0.0, acosAdeg = 0.0, acosBdeg = 0.0, acosCdeg = 0.0;
+
+			cosA = (Math.pow(sideB, 2.0) + Math.pow(sideC, 2.0) - Math.pow(sideA, 2.0))/ (2.0 * sideB * sideC);
+			acosA = Math.acos(cosA);
+			acosAdeg = Math.toDegrees(acosA);
+
+			cosB = (Math.pow(sideC, 2.0) + Math.pow(sideA, 2.0) - Math.pow(sideB, 2.0))/ (2.0 * sideC * sideA);
+			acosB = Math.acos(cosB);
+			acosBdeg = Math.toDegrees(acosB);;
+
+			cosC = (Math.pow(sideA, 2.0) + Math.pow(sideB, 2.0) - Math.pow(sideC, 2.0))/ (2.0 * sideA * sideB);
+			acosC = Math.acos(cosC);
+			acosCdeg = Math.toDegrees(acosC);
+
+			String msg = "Angle A, B, C = " + acosAdeg + ", " + acosBdeg + ", " + acosCdeg;
+			JOptionPane.showMessageDialog(null, msg);
+	}
+}
+        </code>
+      </pre>
+    </div>
+
+    <div class="myRectangle">
+      <h5 id="RectangleClick">Here is my Rectangle.java code (CLICK)</h5>
+      <pre id="RectangleCode">
+        <code>
+import javax.swing.JOptionPane;
+public class Rectangle {
+
+	private double sideA, sideB;
+	private double perimeter;
+	private double area;
+	private double diagonal;
+
+	public Rectangle() {
+	}
+
+	public void setVarsToZero() {
+		sideA = 0.0;
+		sideB = 0.0;
+		perimeter = 0.0;
+		area = 0.0;
+		diagonal = 0.0;
+	}
+
+	public void setSides() {
+		boolean a = true;
+		while(a) {
+			try {
+				sideA = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value for side A: "));
+				a = false;
+			}catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Please Enter a Number");
+			}
+		}
+		boolean b = true;
+		while(b) {
+			try {
+				sideB = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value for side B: "));
+				b = false;
+			}catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Please Enter a Number");
+			}
+		}
+	}
+
+	public void calcPerimeter() {
+		perimeter = (2.0 * (sideA + sideB));
+	}
+	public void calcArea() {
+		area = (sideA * sideB);
+	}
+	public void calcDiagonal() {
+		double cSquared = (Math.pow(sideA, 2.0) + Math.pow(sideB, 2.0));
+		diagonal = (Math.sqrt(cSquared));
+	}
+
+	public void showVars() {
+		String msg = "side A = " + sideA + ", " + "side B = " + sideB + ", " + "perimeter = " + perimeter + ", " + "area = " + area + ", " + "diagonal = " + diagonal;
+		JOptionPane.showMessageDialog(null, msg);
+	}
+}
+        </code>
+      </pre>
+    </div>
+
+
+    <div class="myCircle">
+      <h5 id="CircleClick">Here is my Circle.java code (CLICK)</h5>
+      <pre id="CircleCode">
+        <code>
+import javax.swing.JOptionPane;
+public class Circle {
+
+  private double radius;
+  private double circumference;
+  private double area;
+
+  public Circle() {
+  }
+
+  public void setVarsToZero() {
+    radius = 0.0;
+    area = 0.0;
+    circumference = 0.0;
+  }
+
+
+  public void setRadius() {
+    boolean r = true;
+    while(r) {
+      try {
+        radius = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value of the radius: "));
+        r = false;
+      }catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Please Enter a Number");
+      }
+    }
+  }
+
+  public void calcCircumference() {
+    circumference = (2.0 * Math.PI * radius);
+  }
+
+  public void calcArea() {
+    area = (Math.PI * (Math.pow(radius, 2.0)));
+  }
+
+  public void showVars() {
+    String msg = "radius = " + radius + ", " + "area = " + area + ", " + "circumference = " + circumference;
+    JOptionPane.showMessageDialog(null, msg);
+  }
+}
+        </code>
+      </pre>
+    </div>
+
+
+    <div class="mySphere">
+      <h5 id="SphereClick">Here is my Sphere.java class code (CLICK)</h5>
+      <pre id="SphereCode">
+          <code>
+import javax.swing.JOptionPane;
+public class Sphere {
+
+	private double radius;
+	private double volume;
+	private double surfaceArea;
+
+	public Sphere() {
+	}
+
+	public void setVarsToZero() {
+		radius = 0.0;
+	}
+
+
+	public void setRadius() {
+		boolean r = true;
+		while(r) {
+			try {
+				radius = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value of the radius: "));
+				r = false;
+			}catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Please Enter a Number");
+			}
+		}
+	}
+
+	public void calcVolume() {
+		volume = ((4.0 * (Math.PI) * (Math.pow(radius, 3.0)))/3.0);
+	}
+
+	public void calcSurfaceArea() {
+		surfaceArea = (4.0 * (Math.PI) * (Math.pow(radius, 2.0)));
+	}
+
+	public void showVars() {
+		String msg = "radius = " + radius + ", " + "volume = " + volume + ", " + "surface area = " + surfaceArea;
+		JOptionPane.showMessageDialog(null, msg);
+	}
+}
+        </code>
+      </pre>
+    </div>
+
+
+    <div class="myCuboid">
+      <h5 id="CuboidClick">Here is the code from my Cuboid.java class (CLICK)</h5>
+      <pre id="CuboidCode">
+        <code>
+import javax.swing.JOptionPane;
+public class Cuboid {
+
+	private double sideA, sideB, sideC;
+  private double volume;
+  private double surfaceArea;
+
+  public Cuboid() {
+        	}
+
+  public void setVarsToZero() {
+    sideA = 0.0;
+    sideB = 0.0;
+    sideC = 0.0;
+  }
+
+  public void setSides() {
+    boolean a = true;
+    while(a) {
+      try {
+        sideA = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value for side A: "));
+      	a = false;
+      }catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Please Enter a Number");
+      }
+    }
+    boolean b = true;
+    while(b) {
+      try {
+        sideB = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value for side B: "));
+        b = false;
+      }catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Please Enter a Number");
+      }
+    }
+    boolean c = true;
+    while(c) {
+      try {
+        sideC = Double.parseDouble(JOptionPane.showInputDialog("Please enter the value for side C: "));
+        c = false;
+      }catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Please Enter a Number");
+      }
+    }
+  }
+
+  public void calcVolume() {
+    volume = (sideA * sideB * sideC);
+  }
+  public void calcSurfaceArea() {
+    surfaceArea = 2.0 * ((sideA * sideB) + (sideB * sideC) + (sideC * sideA));
+	}
+
+  public void showVars() {
+    String msg = "side A = " + sideA + ", " + "side B = " + sideB + ", " + "side C = " + sideC
+                 + ", " + "volume = " + volume + ", " + "surface area = " + surfaceArea;
+    JOptionPane.showMessageDialog(null, msg);
+  }
+}
+        </code>
+      </pre>
+    </div>
+  </div>
+</body>
+
+</html>

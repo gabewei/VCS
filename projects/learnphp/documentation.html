@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="css/p1.css">
+  <title>PHP Code Documentation</title>
+</head>
+<body>
+  <h2 style="text-decoration: underline;">Here's the code I used to create a DB, create a table, and insert into a table with PHP: </h2>
+  <pre>
+  <code>
+    &lt;?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "toor";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Create database
+    $sql = "CREATE DATABASE IF NOT EXISTS A4phpvet";
+    if ($conn->query($sql) === TRUE) {
+        echo "Database created successfully";
+    } else {
+        echo "Error creating database: " . $conn->error;
+    }
+
+    // Use the database
+    $sql = "USE A4phpvet";
+    if ($conn->query($sql) === TRUE) {
+        echo " Use DB was successful";
+    } else {
+        echo " Error trying to use DB: " . $conn->error;
+    }
+
+    // sql to create table
+    $sql = "CREATE TABLE IF NOT EXISTS MyGuests (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(30) NOT NULL,
+    lastname VARCHAR(30) NOT NULL,
+    email VARCHAR(50),
+    reg_date TIMESTAMP
+    )";
+
+    if ($conn->query($sql) === TRUE) {
+        echo " Table MyGuests created successfully";
+    } else {
+        echo " Error creating table: " . $conn->error;
+    }
+
+    $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+    VALUES ('John', 'Doe', 'john@example.com');";
+    $sql .= "INSERT INTO MyGuests (firstname, lastname, email)
+    VALUES ('Mary', 'Moe', 'mary@example.com');";
+    $sql .= "INSERT INTO MyGuests (firstname, lastname, email)
+    VALUES ('Julie', 'Dooley', 'julie@example.com')";
+
+    if ($conn->multi_query($sql) === TRUE) {
+        echo " New records created successfully";
+    } else {
+        echo " Error: " . $sql . "&lt;br&gt;" . $conn->error;
+    }
+
+    $conn->close();
+    ?&gt;
+  </code>
+  </pre>
+</body>
+</html>

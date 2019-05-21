@@ -1,0 +1,99 @@
+body {
+  background-image: -webkit-linear-gradient(bottom left, #fde261, #ffc066, #ffa085, #ff8aad, #ff85d5);
+  background-image: -o-linear-gradient(bottom left, #fde261, #ffc066, #ffa085, #ff8aad, #ff85d5);
+  background-image: linear-gradient(to top right, #fde261, #ffc066, #ffa085, #ff8aad, #ff85d5);
+  padding: 20px;
+  -webkit-animation-delay: 0.1s;
+  -webkit-animation-name: fontfix;
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+}
+
+.myHeader {
+  grid-area: header;
+}
+
+.myMenu {
+  grid-area: menu;
+}
+
+.myMain {
+  grid-area: main;
+}
+
+.myRight {
+  grid-area: right;
+}
+
+.myFooter {
+  grid-area: footer;
+}
+
+h1, h2, h3{
+  font-family: 'Abril Fatface', cursive;
+  text-shadow: 2px 2px 1px #ff85d5;
+}
+
+h4, h5, h6, p, a{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'main main main right right'
+    'footer footer footer footer footer';
+  grid-gap: 13px;
+  background-color: #ff85d5;
+  padding: 13px;
+  box-shadow: 6px 6px 1px #fde261;
+  border-style: dashed;
+}
+
+.grid-container>div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  box-shadow: 6px 6px 1px #fde261;
+  border-style: solid;
+}
+
+.hamburger {
+  width: 50px;
+  height: 6px;
+  background-image: -webkit-linear-gradient(bottom left, #fde261, #ffc066, #ffa085, #ff8aad, #ff85d5);
+  background-image: -o-linear-gradient(bottom left, #fde261, #ffc066, #ffa085, #ff8aad, #ff85d5);
+  background-image: linear-gradient(to top right, #fde261, #ffc066, #ffa085, #ff8aad, #ff85d5);
+  margin: 6px 0;
+}
+
+@-webkit-keyframes fontfix {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+a:hover{
+  color: #fde261;
+  text-shadow: 1px 2px black;
+  font-weight: bold;
+}
+
+input[type=text] {
+  font-size: 1.5em;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: white;
+}
+input[type=text]:hover {
+  box-shadow: 5px 5px #ff85d5;
+}
+input[type=text]:focus {
+  background-color: #fde261;
+}
