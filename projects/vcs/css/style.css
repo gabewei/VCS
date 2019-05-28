@@ -1,0 +1,37 @@
+body {
+    background-image: -webkit-linear-gradient(bottom left, #fde261, #ffc066, #ffa085, #ff8aad, #ff85d5);
+    background-image: -o-linear-gradient(bottom left, #fde261, #ffc066, #ffa085, #ff8aad, #ff85d5);
+    background-image: linear-gradient(to top right, #fde261, #ffc066, #ffa085, #ff8aad, #ff85d5);
+    padding: 20px;
+    -webkit-animation-delay: 0.1s;
+    -webkit-animation-name: fontfix;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+  }
+  
+  
+  h1, h2, h3{
+    font-family: 'Abril Fatface', cursive;
+    text-shadow: 2px 2px 1px #ff85d5;
+  }
+  
+  h4, h5, h6, p, a{
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  @-webkit-keyframes fontfix {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    padding: 15px;
+  text-align: left;
+  }

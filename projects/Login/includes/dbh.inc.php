@@ -1,17 +1,21 @@
 <?php
+$servername = "gator4268.hostgator.com";
+$dBUsername = "mmclend_login";
+$dBPassword = "logintoor";
+$dBName = "mmcclend_phplogin";
 
-$servername = "localhost";
-$dBUsername = "root";
-$dBPassword = "toor";
-$dBName = "loginsystemtut";
+$conn = new mysqli($servername, $dBUsername, $dBPassword, $dBName);
 
-//$servername = "gator4268.hostgator.com";
-//$dBUsername = "mmclend_login";
-//$dBPassword = "logintoor";
-//$dBName = "mmcclend_phplogin";
+if ($conn->connect_error) {
+    ("Connection to online database failed: ". $conn->connect_error);
+    $servername = "localhost";
+    $dBUsername = "root";
+    $dBPassword = "toor";
+    $dBName = "loginsystemtut";
 
-$conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
+    $conn = new mysqli($servername, $dBUsername, $dBPassword, $dBName);
 
-if (!conn) {
-    die("Connection failed: ".mysqli_connect_error());
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 }
